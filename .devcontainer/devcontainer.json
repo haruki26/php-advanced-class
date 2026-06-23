@@ -1,0 +1,17 @@
+{
+    "name": "PHP Advanced Class",
+    "dockerComposeFile": ["./../compose.yaml"],
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "remoteUser": "vscode",
+    "postCreateCommand": "if [ -f composer.json ]; then composer install; fi",
+    "forwardPorts": [8000, 3306],
+    "portsAttributes": {
+        "8000": {
+            "label": "Laravel"
+        },
+        "3306": {
+            "label": "MySQL"
+        }
+    }
+}
