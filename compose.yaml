@@ -30,13 +30,19 @@ services:
       MYSQL_USER: laravel
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: rootsecret
+      TZ: Asia/Tokyo
     ports:
       - "3306:3306"
     volumes:
-      - ./docker/mysql/data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
       - ./docker/mysql/conf/my.cnf:/etc/mysql/my.cnf
     networks:
       - devnet
+
+
+volumes:
+  mysql-data:
+    driver: local
 
 networks:
   devnet:

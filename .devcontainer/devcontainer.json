@@ -4,14 +4,23 @@
     "service": "app",
     "workspaceFolder": "/workspace",
     "remoteUser": "vscode",
-    "postCreateCommand": "if [ -f composer.json ]; then composer install; fi",
-    "forwardPorts": [8000, 3306],
-    "portsAttributes": {
-        "8000": {
-            "label": "Laravel"
-        },
-        "3306": {
-            "label": "MySQL"
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                },
+                "editor.renderWhitespace": "all"
+            },
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "onecentlin.laravel-extension-pack"
+            ]
         }
-    }
+    },
+    "postCreateCommand": "sudo chown -R vscode:vscode /workspace && composer install",
+    "forwardPorts": [8000, 3306]
 }
